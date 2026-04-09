@@ -1,0 +1,14 @@
+{
+  "appId": "com.ledbadge.s1144",
+  "appName": "LED Badge S1144",
+  "webDir": "../src",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

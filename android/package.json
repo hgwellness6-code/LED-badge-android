@@ -1,0 +1,14 @@
+{
+  "name": "led-badge-android",
+  "version": "1.0.0",
+  "description": "Android build wrapper for LED Badge S1144",
+  "scripts": {
+    "build": "npx cap sync android && cd android-project && ./gradlew assembleDebug",
+    "build:release": "npx cap sync android && cd android-project && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/cli": "^6.0.0"
+  }
+}

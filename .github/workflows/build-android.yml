@@ -36,26 +36,8 @@ jobs:
         run: |
           mkdir -p cap-project/www
           cp -r src/. cap-project/www/
-          cat > cap-project/capacitor.config.json << 'CAPEOF'
-{
-  "appId": "com.ledbadge.s1144",
-  "appName": "LED Badge S1144",
-  "webDir": "www",
-  "server": {
-    "androidScheme": "https"
-  }
-}
-CAPEOF
-          cat > cap-project/package.json << 'PKGEOF'
-{
-  "name": "led-badge-android",
-  "version": "1.0.0",
-  "dependencies": {
-    "@capacitor/core": "latest",
-    "@capacitor/android": "latest"
-  }
-}
-PKGEOF
+          echo '{"appId":"com.ledbadge.s1144","appName":"LED Badge S1144","webDir":"www","server":{"androidScheme":"https"}}' > cap-project/capacitor.config.json
+          echo '{"name":"led-badge-android","version":"1.0.0","dependencies":{"@capacitor/core":"latest","@capacitor/android":"latest"}}' > cap-project/package.json
           cd cap-project
           npm install
           npx cap add android
@@ -68,12 +50,7 @@ PKGEOF
       - name: Add USB device filter
         run: |
           mkdir -p cap-project/android/app/src/main/res/xml
-          cat > cap-project/android/app/src/main/res/xml/usb_device_filter.xml << 'XMLEOF'
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <usb-device vendor-id="1046" product-id="20512" />
-</resources>
-XMLEOF
+          printf '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <usb-device vendor-id="1046" product-id="20512" />\n</resources>' > cap-project/android/app/src/main/res/xml/usb_device_filter.xml
 
       - name: Grant Gradle permission
         run: chmod +x cap-project/android/gradlew
